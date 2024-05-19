@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Danfo&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #0B1223;
 }
 
 body{
@@ -13,6 +16,7 @@ body{
 }
 
 .player {
+    background-color: #064667;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -21,7 +25,6 @@ body{
     width: 100%;
     height: 500px;
     margin: 0 10px;
-    box-shadow: 0 1px 10px gray;
     padding: 10px;
     border-radius: 5px;
     #capaMusica {
@@ -35,10 +38,14 @@ body{
     }
     #nomeMusica {
         font-size: 25px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-family:'Radio Canada Big';
+        color: whitesmoke;
+        background-color: #064667;
     }
 }
-
+.controles{
+    background-color: #064667;
+}
 .controles button{
     background: none;
     border: none;
@@ -47,7 +54,7 @@ body{
         font-size: 45px;
         padding: 8px;
         border-radius: 50%;
-        background-color: aqua;
+        background-color: rgb(148, 190, 190);
         transition: all .4s;
     }
     i:hover {
@@ -55,14 +62,16 @@ body{
     }
 }
 .tempo {
+    background-color: #064667;
     display: flex;
     align-items: center;
     justify-content: space-between;
     
 }
 .tempo span {
+    background-color: #064667;
     font-size: 22px;
-    color: #333;
+    color: whitesmoke;
 }
 .dadosMusica{
     width: 100%;
@@ -78,10 +87,14 @@ body{
 
 .progress {
     height: 8px;
-    background-color: #333;
+    background-color: #64a6cb;
+    ;
     border-radius: 5px;
 }
 
 .fall {
     display: none;
+}
+#nomeMusica {
+    text-align: center;
 }

@@ -7,8 +7,9 @@ const pauseBtn = document.querySelector(".pause");
 const avancarBtn = document.querySelector("#avancar");
 const tempoAtual = document.querySelector(".tempoAtual");
 const tempoTotal = document.querySelector(".tempoTotal");
-const progressBar = document.querySelector("progressBar");
+const progressBar = document.querySelector(".progressBar");
 const progress = document.querySelector(".progress");
+const icon = document.querySelector("#icon");
 import musicas from './musicas.js';
 
 let index = 0;
@@ -19,26 +20,33 @@ avancarBtn.onclick= () => prevNextMusic();
 playBtn.onclick = () => tocar();
 pauseBtn.onclick = () => pausar();
 
-musica.ontimeupdate = () => updateTime();
+progressBar.onclick = (e) => {
+    const newTime = (e.offsetX / progressBar.offsetWidth) *
+    musica.duration;
+    musica.currentTime = newTime;
+  }
 
-const formatZero = (n) => {n < 10 ? "0" + n : n};
+
+musica.ontimeupdate = () => updateTime();
 
 const updateTime = () => {
     const currentMinutes = Math.floor(musica.currentTime / 60);
     const currentSeconds = Math.floor(musica.currentTime % 60);
     tempoAtual.textContent = currentMinutes + ":" + formatZero(currentSeconds);
-    
+  
     const durationFormatted = isNaN(musica.duration) ? 0 : musica.duration;
     const durationMinutes = Math.floor(durationFormatted / 60);
     const durationSeconds = Math.floor(durationFormatted % 60);
     tempoTotal.textContent = durationMinutes + ":" + formatZero(durationSeconds);
-
-    const progressWidth = durationFormatted ? (musica.currentTime / durationFormatted) * 100 : 0;
-    
+  
+    const progressWidth = durationFormatted
+      ? (musica.currentTime / durationFormatted) * 100
+      : 0;
+  
     progress.style.width = progressWidth + "%";
-};
-
-
+  };
+  
+  const formatZero = (n) => (n < 10 ? "0" + n : n);
 
 const tocar = () => {
     musica.play();
@@ -68,6 +76,7 @@ type === "init") {
 musica.src = musicas[index].src
 nomeMusica.innerHTML = musicas[index].name;
 capaMusica.src = musicas[index].img;
+icon.href = musicas[index].img;
 if (type !== "init") avancar();
 updateTime();
 };
