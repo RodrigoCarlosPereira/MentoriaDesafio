@@ -69,6 +69,7 @@ body{
     
 }
 .tempo span {
+    font-family:'Radio Canada Big';
     background-color: #064667;
     font-size: 22px;
     color: whitesmoke;
