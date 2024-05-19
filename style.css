@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+    height: 500px;
+    margin: 0 10px;
+    box-shadow: 0 1px 10px gray;
+    padding: 10px;
+    border-radius: 5px;
+    #capaMusica {
+        background-color: #f7f7f7;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;  
+    }
+    #nomeMusica {
+        font-size: 25px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+}
+
+.controles button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    i {
+        font-size: 45px;
+        padding: 8px;
+        border-radius: 50%;
+        background-color: aqua;
+        transition: all .4s;
+    }
+    i:hover {
+        background-color: #f7f7f7;
+    }
+}
+.tempo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.tempo span {
+    font-size: 22px;
+    color: #333;
+}
+.dadosMusica{
+    width: 100%;
+    
+}
+.progressBar  {
+    height: 8px;
+    background-color: #ddd;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.progress {
+    height: 8px;
+    background-color: #333;
+    border-radius: 5px;
+}

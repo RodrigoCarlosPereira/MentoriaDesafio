@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="player">
+        <div id="card">
+            <img id="capaMusica" src="./src/fundo-musica-sunny.jpg" alt="">
+            <p id="nomeMusica">Nome</p>
+        </div>
+        <audio id="musica" src=""></audio>
+        <div class="controles">
+            <button id="voltar">
+                <i class="bx bx-skip-previous"></i>
+            </button>
+
+            <button id="playPause">
+                <i class="bx bx-play"></i>
+            </button>
+            
+            <button id="avancar">
+                <i class="bx bx-skip-next"></i>
+            </button>
+            
+        </div>
+        <div class="dadosMusica">
+            <div class="progressBar">
+                <div class="progress"></div>
+            </div>
+            <div class="tempo">
+                <span class="tempoAtual">00:00</span>
+                <span class="tempoTotal">00:00</span>
+            </div>
+        </div>
+    </div>
+    ,<script type="module" src="./script.js"></script>   
+</body>
+</html>
