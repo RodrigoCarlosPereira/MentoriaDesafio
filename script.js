@@ -11,9 +11,6 @@ const progressBar = document.querySelector("progressBar");
 const progress = document.querySelector(".progress");
 import musicas from './musicas.js';
 
-const buttonPlay = "<i class='bx bx-play'></i>";
-const buttonPause = "<i class='bx bx-pause'></i>";
-
 let index = 0;
 
 voltarBtn.onclick= () => prevNextMusic("prev");
@@ -22,16 +19,37 @@ avancarBtn.onclick= () => prevNextMusic();
 playBtn.onclick = () => tocar();
 pauseBtn.onclick = () => pausar();
 
+musica.ontimeupdate = () => updateTime();
+
+const formatZero = (n) => {n < 10 ? "0" + n : n};
+
+const updateTime = () => {
+    const currentMinutes = Math.floor(musica.currentTime / 60);
+    const currentSeconds = Math.floor(musica.currentTime % 60);
+    tempoAtual.textContent = currentMinutes + ":" + formatZero(currentSeconds);
+    
+    const durationFormatted = isNaN(musica.duration) ? 0 : musica.duration;
+    const durationMinutes = Math.floor(durationFormatted / 60);
+    const durationSeconds = Math.floor(durationFormatted % 60);
+    tempoTotal.textContent = durationMinutes + ":" + formatZero(durationSeconds);
+
+    const progressWidth = durationFormatted ? (musica.currentTime / durationFormatted) * 100 : 0;
+    
+    progress.style.width = progressWidth + "%";
+};
+
+
+
 const tocar = () => {
-        musica.play();
-        playBtn.classList.toggle("fall");
-        pauseBtn.classList.toggle("fall");     
-    }
+    musica.play();
+    playBtn.classList.toggle("fall");
+    pauseBtn.classList.toggle("fall");     
+}
 const pausar = () => {
-       musica.pause();
-       playBtn.classList.toggle("fall");
-       pauseBtn.classList.toggle("fall");
-    }
+    musica.pause();
+    playBtn.classList.toggle("fall");
+    pauseBtn.classList.toggle("fall");
+}
 const avancar = () => {
     musica.play();
     playBtn.classList.add("fall");
@@ -51,6 +69,7 @@ musica.src = musicas[index].src
 nomeMusica.innerHTML = musicas[index].name;
 capaMusica.src = musicas[index].img;
 if (type !== "init") avancar();
+updateTime();
 };
 
 
