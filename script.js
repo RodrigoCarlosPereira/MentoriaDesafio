@@ -9,8 +9,7 @@ const tempoAtual = document.querySelector(".tempoAtual");
 const tempoTotal = document.querySelector(".tempoTotal");
 const progressBar = document.querySelector("progressBar");
 const progress = document.querySelector(".progress");
-
-import songs from "./songs";
+import musicas from './musicas.js';
 
 const buttonPlay = "<i class='bx bx-play'></i>";
 const buttonPause = "<i class='bx bx-pause'></i>";
@@ -20,26 +19,38 @@ let index = 0;
 voltarBtn.onclick= () => prevNextMusic("prev");
 avancarBtn.onclick= () => prevNextMusic();
 
-playBtn.onclick = () => play();
+playBtn.onclick = () => tocar();
+pauseBtn.onclick = () => pausar();
 
-const play = () => {
+const tocar = () => {
         musica.play();
         playBtn.classList.toggle("fall");
-        pauseBtn.classList.toggle("fall");
+        pauseBtn.classList.toggle("fall");     
     }
+const pausar = () => {
+       musica.pause();
+       playBtn.classList.toggle("fall");
+       pauseBtn.classList.toggle("fall");
+    }
+const avancar = () => {
+    musica.play();
+    playBtn.classList.add("fall");
+    pauseBtn.classList.remove("fall");
+}
 
 const prevNextMusic = (type = "next") => {
-    if ((type == "next" && index + 1 === songs.length) || 
+    if ((type == "next" && index + 1 === musicas.length) || 
 type === "init") {
     index = 0;
 } else if (type == "prev" && index === 0) {
-    index = songs.length;
+    index = musicas.length;
 } else {
     index = type === "prev" && index ? index - 1 : index + 1;
 }
-musica.scr = songs[index].src;
-nomeMusica.innerHTML = songs[index].name;
-if (type !== "init") play();
+musica.src = musicas[index].src
+nomeMusica.innerHTML = musicas[index].name;
+capaMusica.src = musicas[index].img;
+if (type !== "init") avancar();
 };
 
 
